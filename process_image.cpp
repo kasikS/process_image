@@ -37,7 +37,7 @@ Status crop_center(byte *in_pixels, unsigned int in_width, unsigned int in_heigh
       for (unsigned int b = 0; b < bytes_per_pixel; b++) {
       	pixel = in_pixels[in_y_offset + in_x_offset + b];
       	if (cast_int){ 
-        	out_pixels[out_y_offset + out_x_offset + b] = static_cast<int8_t>(pixel);
+        	out_pixels[out_y_offset + out_x_offset + b] = static_cast<int8_t>(pixel-128);
         }else{
 	        out_pixels[out_y_offset + out_x_offset + b] = pixel;
         }
@@ -101,3 +101,11 @@ Status scale(byte *in_pixels, unsigned int in_width, unsigned int in_height, byt
 
    return OK;
  }
+ 
+float normalize(float x, float scale, float offset) {
+  return (x * scale) - offset;
+}
+
+int8_t quantize(float x, float scale, float zero_point) {
+  return (x / scale) + zero_point;
+}
