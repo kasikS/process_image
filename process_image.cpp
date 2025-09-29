@@ -1,5 +1,5 @@
 /*
- * A library to process images retrieved from a camera
+ * A  library to process images retrieved from a camera
  * based on edge impulse workshop for arduino
  */
 
@@ -16,7 +16,7 @@ Status crop_center(byte *in_pixels, unsigned int in_width, unsigned int in_heigh
 
   // Verify crop is smaller
   if ((in_width < out_width) || (in_height < out_height)) {
-    return ERROR;
+    return PI_ERROR;
   }
 
   // Calculate size of output image
@@ -45,7 +45,7 @@ Status crop_center(byte *in_pixels, unsigned int in_width, unsigned int in_heigh
     }
   }
 
-  return OK;
+  return PI_OK;
 }
 
 // Function: scale image using nearest neighber - consider in place?
@@ -90,7 +90,7 @@ Status scale(byte *in_pixels, unsigned int in_width, unsigned int in_height, byt
     }
   }
 
-  return OK;
+  return PI_OK;
 }
 
 // OV767X library uses 2 bytes per pixel in grayscale, so just keep first pixel
@@ -99,7 +99,7 @@ Status scale(byte *in_pixels, unsigned int in_width, unsigned int in_height, byt
      out_pixels[i] = in_pixels[bytes_per_pixel * i];
    }
 
-   return OK;
+   return PI_OK;
  }
  
 float normalize(float x, float scale, float offset) {

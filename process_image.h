@@ -3,8 +3,8 @@
 #include <Arduino.h>
 
 typedef enum {
-  OK = 0,
-  ERROR = 1
+  PI_OK = 0,
+  PI_ERROR = 1
 } Status;
 
 Status crop_center(byte *in_pixels, unsigned int in_width, unsigned int in_height, byte *out_pixels, unsigned int out_width, unsigned int out_height, unsigned int bytes_per_pixel, bool cast_int);
